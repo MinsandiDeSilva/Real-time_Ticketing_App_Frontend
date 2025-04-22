@@ -1,0 +1,44 @@
+
+/* Homepage Section with Full Background Image */
+.homepage {
+  height: 100vh; /* Full screen height */
+  background-image: url('../homepage/concert.jpg'); /* Path to the image */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  flex-direction: column; /* Ensure content is stacked vertically */
+  padding-top: 80px; /* Make room for fixed navbar */
+}
+
+/* Welcome Box Styling */
+.welcome-box {
+  text-align: center;
+  padding: 20px 40px;
+  border-radius: 10px;
+}
+
+/* Heading Styling */
+h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+/* Button Styling */
+.start-button {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  color: white;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  background-color: purple;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.start-button:hover {
+  background-color: rgb(206, 73, 206);
+}

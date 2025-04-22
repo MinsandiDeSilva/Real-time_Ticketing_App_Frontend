@@ -1,0 +1,93 @@
+<div class="container">
+  <div class="add-customer">
+    <h2>Add Customers</h2>
+
+    <form [formGroup]="customerForm" (ngSubmit)="addCustomer()">
+      <div class="form-group">
+          <label for="customerName">Name:</label>
+          <input 
+            type="text" 
+            id="customerName" 
+            formControlName="customerName" 
+            placeholder="Enter customer name"
+          />
+  
+          <div *ngIf="customerForm.controls['customerName']?.touched && customerForm.controls['customerName']?.invalid" class="error">
+            <span *ngIf="customerForm.controls['customerName']?.errors?.['required']">Name is required.</span>
+          </div>
+        </div>
+  
+  
+      <div class="form-group">
+        <label for="customeremail">Email:</label>
+        <input 
+          type="text" 
+          id="customeremail" 
+          formControlName="email" 
+          placeholder="Enter customer email"
+        />
+  
+        <div *ngIf="customerForm.controls['email']?.touched && customerForm.controls['email']?.invalid" class="error">
+          <span *ngIf="customerForm.controls['email']?.errors?.['required']">Email is required.</span>
+          <span *ngIf="customerForm.controls['email']?.errors?.['email']">Invalid email format.</span>
+        </div>
+      </div>
+  
+  
+      <div class="form-group">
+        <label for="contactNo">Contact Number:</label>
+        <input 
+          type="text" 
+          id="contactNo" 
+          formControlName="contactNo" 
+          placeholder="Enter customer contact number"
+        />
+        <div *ngIf="customerForm.controls['contactNo']?.touched && customerForm.controls['contactNo']?.invalid" class="error">
+          <span *ngIf="customerForm.controls['contactNo']?.errors?.['required']">Contact number is required.</span>
+          <span *ngIf="customerForm.controls['contactNo']?.errors?.['pattern']">Contact number must be 10 digits.</span>
+        </div>
+      </div>
+
+      <div>
+        <label>Concert Name:</label>
+        <input type="text" [value]="concertName" disabled class="readonly-input" />
+      </div><br>
+
+      <div>
+        <label>Price:</label>
+        <input type="text" [value]="price" disabled class="readonly-input" />
+      </div>
+  
+     
+    <button type="submit" [disabled]="customerForm.invalid" id="add">Add Customer</button>
+    <button type="button" (click)="next()" id="next">Next</button>
+    </form>
+
+  </div>
+ 
+    <h3>Customers List</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>ContactNumber</th>
+          <th>Concert Name</th>
+          <th>Price</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let customer of customers">
+          <td>{{ customer.customerName }}</td>
+          <td>{{ customer.email }}</td>
+          <td>{{ customer.contactNo }}</td>
+          <td>{{ customer.concertName }}</td>
+          <td>{{ customer.price }}</td>
+          <td><i class="fa-regular fa-trash-can" id="delete" (click)="delete(customer.customerId)"style="cursor: pointer; color: red;" title="Delete Vendor"></i></td>
+        </tr>
+      </tbody>
+    </table>
+  
+</div>
+

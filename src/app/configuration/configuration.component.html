@@ -1,0 +1,82 @@
+<div class="container">
+  <div class="configuration">
+    <h2>System Configuration</h2>
+    <form [formGroup]="configForm"   (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="totalTickets">Total Tickets :</label>
+        <input 
+            type="number"
+            id="totalTickets"
+            formControlName="totalTickets"
+            placeholder="Enter totalTickets"
+          />
+          <div *ngIf="controls['totalTickets']?.touched && controls['totalTickets']?.invalid" class="error">
+            <span *ngIf="controls['totalTickets']?.errors?.['required']">Total Tickets is required.</span>
+            <span *ngIf="controls['totalTickets']?.errors?.['min']">Must be greater than 0.</span>
+          </div>
+      </div >
+  
+      <div class="form-group">
+        <label for="maxTicketCapacity">Max Ticket Capacity :</label>
+        <input
+          type="number"
+          id="maxTicketCapacity"
+          formControlName="maxTicketCapacity"
+          placeholder="Enter max ticket capacity"
+        />
+        <div *ngIf="controls['maxTicketCapacity']?.touched && controls['maxTicketCapacity']?.invalid" class="error">
+          <span *ngIf="controls['maxTicketCapacity']?.errors?.['required']">Max Ticket Capacity is required.</span>
+          <span *ngIf="controls['maxTicketCapacity']?.errors?.['min']">Must be greater than 0.</span>
+        </div>
+  
+      </div>
+  
+      <div class="form-group">
+        <label for="releaseRate">Ticket Release Rate :</label>
+        <input
+          type="number"
+          id="releaseRate"
+          formControlName="ticketReleaseRate"
+          placeholder="Enter ticket release rate"
+        />
+  
+      <div *ngIf="controls['ticketReleaseRate']?.touched && controls['ticketReleaseRate']?.invalid" class="error">
+        <span *ngIf="controls['releaseticketReleaseRateRate']?.errors?.['required']">Release Rate is required.</span>
+        <span *ngIf="controls['ticketReleaseRate']?.errors?.['min']">Must be greater than 0.</span>
+      </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="customerRetrievalRate">Customer Retrieval Rate :</label>
+        <input
+          type="number"
+          id="retrievalRate"
+          formControlName="customerRetrievalRate"
+          placeholder="Enter retrival rate"
+        />
+        <div *ngIf="controls['customerRetrievalRate']?.touched && controls['customerRetrievalRate']?.invalid" class="error">
+          <span *ngIf="controls['customerRetrievalRate']?.errors?.['required']">Retrieval Rate is required.</span>
+          <span *ngIf="controls['retrievalcustomerRetrievalRateRate']?.errors?.['min']">Must be greater than 0.</span>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="concert">Select Concert : </label>
+        <select id="concert"  formControlName="concert">
+          <option *ngFor="let concert of concerts" [value]="concert.name">
+            {{ concert.name }}
+          </option>
+        </select>
+        <div *ngIf="controls['concert']?.touched && controls['concert']?.invalid" class="error">
+          <span *ngIf="controls['concert']?.errors?.['required']">Concert selection is required.</span>
+        </div>
+      </div>
+      
+      <button (click)="loadPreviousConfig()">Use Previous Details</button>
+      <button type="submit" [disabled]="!configForm.valid" >Save Configuration</button>
+
+    </form>
+  </div>
+  
+
+</div>

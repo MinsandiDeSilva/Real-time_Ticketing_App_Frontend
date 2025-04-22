@@ -1,0 +1,11 @@
+<div class="heading"><h1>Concerts</h1></div>
+<div class="concert-container">
+    <div class="concert-card" *ngFor="let concert of concerts">
+      <img [src]="concert.image" alt="{{concert.name}}" />
+      <h3>{{ concert.name }}</h3>
+      <p><strong>Date:</strong> {{ concert.date }}</p>
+      <p><strong>Stadium:</strong> {{ concert.stadium }}</p>
+      <p><strong>Price:</strong> ${{ concert.price }}</p>
+    </div>
+  </div>
+  
